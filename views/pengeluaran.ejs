@@ -117,10 +117,16 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tbody id="daftar-pengeluaran">
-                            <tr>
-                                <td colspan="5" class="text-center">Memuat data...</td>
-                            </tr>
+                        <tbody >
+                            <% data.forEach(d => { %>
+                                <tr>
+                                    <td><%- d.sumber %></td>
+                                    <td><%- d.jumlah %></td>
+                                    <td><%- d.kategori %></td>
+                                    <td><%- d.tanggal %></td>
+                                    <td>Aksi</td>
+                                </tr>
+                            <% }) %>
                         </tbody>
                     </table>
                 </div>
@@ -167,10 +173,12 @@
         });
 
         // Fungsi untuk memuat data pengeluaran
-        function loadPengeluaranData() {
-            fetch('/api/pengeluaran')
+        function loadPengeluaranData() { // INI KEKNYA GA JALAN
+            console.log("hallloooo")
+            fetch('/api/pengeluaran/pengeluaran')
                 .then(response => response.json())
                 .then(data => {
+                    console.log(data)
                     const tableBody = document.getElementById('daftar-pengeluaran');
                     tableBody.innerHTML = '';
                     

@@ -56,11 +56,26 @@ app.get('/pendapatan', async (req,res) => {
 
 app.get('/pengeluaran', async (req,res) => {
   try{
-    console.log("Pengeluaran model:", Pengeluaran);
-    const pengeluaranData = await Pengeluaran.find().sort('name');
-    res.render('pengeluaran', { pengeluaran: pengeluaranData });
+    // console.log("Pengeluaran model:", Pengeluaran); INI BUAT APA CO
+    /*
+    TODO:
+    Pengeluaran data ambil dari API jangan dari model mongose langsung
+    */
+    const pengeluaranData = await Pengeluaran.find().sort('name'); // Kan pake API knp ada request di sini
+    console.log(pengeluaranData);
+    res.render('pengeluaran', { data: pengeluaranData });
   } catch(error){
     console.error("Error mengambil data pengeluaran:", error);
+    res.status(500).send('Terjadi kesalahan dalam mengambil data pengeluaran.');
+  }
+});
+
+app.get('/test', async (req,res) => {
+  try{
+    var Data = [{ message: 'Please Add a Title 1' }, { message: 'Please Add a Title 2' } ]
+    res.render('test', {data: Data});
+  } catch(error){
+    console.error(error);
     res.status(500).send('Terjadi kesalahan dalam mengambil data pengeluaran.');
   }
 });
