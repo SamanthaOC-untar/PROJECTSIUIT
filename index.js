@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const books = require('./routes/books');
-const Book = require('./models/book');
+const pendapatanRoutes = require('./routes/pendapatans');
+const Pendapatan = require('./models/pendapatan');
 const Joi = require('joi');
 const express = require('express');
 const multer = require('multer');
@@ -36,19 +36,17 @@ mongoose.connect('mongodb://localhost:27017/projectsiuit')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/api/books', books);
+app.use('/api/pendapatan', pendapatanRoutes);
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/eBook', express.static(path.join(__dirname, 'eBook')));
 
-app.get('/', async (req,res) => {
+app.get('/pendapatan', async (req,res) => {
   try{
-    console.log("Book model:", Book);
-    const books = await Book.find().sort('name');
-    res.render('index', { books});
+    console.log("Pendapatan model:", Pendapatan);
+    const pendapatanData = await Pendapatan.find().sort('name');
+    res.render('index', { pendapatan: pendapatanData });
   } catch(error){
-    console.error("Error mengambil buku:", error);
-    res.status(500).send('Terjadi kesalahan dalam mengambil data buku.');
+    console.error("Error mengambil data pendapatan:", error);
+    res.status(500).send('Terjadi kesalahan dalam mengambil data pendapatan.');
   }
 });
 
