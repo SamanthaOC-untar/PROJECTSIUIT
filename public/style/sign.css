@@ -1,0 +1,111 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+
+.container{
+    display: block;
+}
+
+body{
+    background-image: url("/image/Bg_book.jpg");
+    background-image: url("../image/Bg_book.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.top{
+    color: aliceblue;
+    padding: 10px;
+}
+
+h1{
+    font-size: 90px;
+    text-shadow: black 5px 5px 10px;
+    
+}
+
+.russo-one-regular {
+    font-family: "Russo One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+.top, .middle, .bottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.username{
+    padding-bottom: 10px;
+}
+
+.field-password{
+    margin-bottom:10px;
+}
+
+.book_kecil{
+    width: 300px;
+    height: 300px;
+}
+
+.middle{
+    padding-bottom: 10px;
+}
+
+.field{
+    width: 500px;
+    height: 50px;
+
+    padding-left: 10px;
+
+    font-size: large;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+
+    padding: 10px 60px;
+}
+
+.btn_login, .btn_up{
+    width: 200px;
+    height: 40px;
+
+    margin-top: 9px;
+    font-size: large;
+}
+
+.btn_wrap{
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn_login, .btn_up, input{
+    border-radius: 10px;
+    border-style: none;
+}
+
+.btn_login{
+    background-color: rgba(170, 180, 242, 1);
+}
+
+.btn_up:hover{
+    background: linear-gradient(to right, #55EE40, #FFF757);
+}
+
+fieldset{
+    border-style:none;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+
+    box-shadow: 2px 2px rgb(134, 130, 130);
+
+    height: 270px;
+    width: 400px;
+
+    padding: 20px;
+}

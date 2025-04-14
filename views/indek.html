@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Buku</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Jika ada CSS -->
+</head>
+<body>
+    <h1>Manajemen uku</h1>
+    
+    <form id="bookForm" enctype="multipart/form-data">
+        <input type="text" id="name" placeholder="Nama Buku" required>
+        <input type="number" id="halaman" placeholder="Jumlah Halaman" required>
+        <input type="text" id="penulis" placeholder="Nama Penulis" required>
+        <input type="text" id="lokasi" placeholder="Lokasi Buku" required>
+        <input type="file" id="ebook" name="ebook" placeholder="EBook (jika ada)" accept=".pdf, .epub, .mobi">
+    <input type="text" id="searchInput" placeholder="Cari buku atau penulis...">
+    <button type="submit" id="submitButton">Tambah Buku</button>
+
+
+
+    </form>
+
+    <table id="booksTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nama Buku</th>
+                <th>Jumlah Halaman</th>
+                <th>Penulis</th>
+                <th>Lokasi</th>
+                <th>EBook</th>
+                <th>Aksi</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <% books.forEach(book => { %>
+                <tr>
+                    <td><%= book._id %></td>
+                    <td><%= book.name %></td>
+                    <td><%= book.halaman %></td>
+                    <td><%= book.penulis %></td>
+                    <td><%= book.lokasi %></td>
+                    <td>
+                        <% if (book.filepath) { %>
+                            <a href="<%= book.filepath.replace(/\\/g, '/') %>" target="_blank" rel="noopener noreferrer">Baca PDF</a>
+                          Tidak ada
+                        <% } %>
+                      </td>
+                    <td>
+                        <button onclick="deleteBook('<%= book._id %>')">Hapus</button>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <script src="/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+*{
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    font-size: large;
+}
+
+body{
+    background-image: url("/image/Bg_book.jpg");
+    background-image: url("../image/Bg_book.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+} 
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 2px gray solid;
+}
+
+.button{
+    width: 120px;
+    height: 50px;
+
+    border-style: red;
+    border-radius: 5px;
+    background-color: white;
+
+    font-size: large;
+}
+    
+.table{
+    backdrop-filter: blur(20px);
+
+    height: auto;
+    width: auto;
+
+    font-size: large;
+
+    border: 2px gray solid;
+
+    color: aqua;
+}
+
+.field-search{
+    border-radius: 5px;
+    border-style: none;
+}
+
+.change{
+    border-radius: 5px;
+    border-style: none;
+}

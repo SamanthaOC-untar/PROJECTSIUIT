@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/Login.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <title>Login Page</title>
+</head>
+<body>
+    <div class="container">
+        <div class="top">
+            <h1 class="russo-one-regular">Selamat Datang, User</h1>
+        </div>
+
+        <div class="middle">
+            <img class="book_kecil" src="/image/book_kecil.svg" alt="book_kecil">
+        </div>
+
+        <div class="bottom">
+            <form class="Login" action="/auth/Login" method="post">
+                <fieldset>
+                    <div class="username">
+                        <input class="field" type="text" name="username" placeholder="Username" required autofocus>
+                    </div>
+
+                    <div class="password">
+                        <input class="field" type="password" name="password" placeholder="Password" required>
+                    </div>
+
+                    <div class="btn_wrap">
+                        <button class="btn_login russo-one-regular" type="submit" name="submit">Login</button>
+                        <% if (locals.error) { %>
+                            <span class="text-danger pl-2"><%= error %></span>
+                        <% } %> 
+                        <button class="btn_up russo-one-regular"><a href="/auth/sign">Sign Up</a></button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
