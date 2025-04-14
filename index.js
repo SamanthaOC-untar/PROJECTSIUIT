@@ -1,12 +1,18 @@
 const mongoose = require('mongoose');
 const pendapatanRoutes = require('./routes/pendapatans');
 const Pendapatan = require('./models/pendapatan');
+const pengeluaranRoutes = require('./routes/pengeluarans');
+const Pengeluaran = require('./models/pengeluaran');
 const Joi = require('joi');
 const express = require('express');
 const multer = require('multer');
 const ejs = require('ejs');
 const app = express();
 const path = require('path'); // Import path module
+
+// Tambahkan di sini (tanpa mengubah yang lain)
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views')); // Konfigurasi views directory
 
 const session = require("express-session")
 const bodyParser = require("body-parser");
@@ -27,9 +33,6 @@ const indexRoutes = require('./routes/index');
 app.use('/', indexRoutes);
 app.use('/auth', authRoutes);
 
-//
-app.set('view engine', 'ejs');
- 
 mongoose.connect('mongodb://localhost:27017/projectsiuit')
   .then(() => console.log('Connected to MongoDB...'))
   .catch(err => console.error('Could not connect to MongoDB...'));
@@ -37,6 +40,7 @@ mongoose.connect('mongodb://localhost:27017/projectsiuit')
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/api/pendapatan', pendapatanRoutes);
+app.use('/api/pengeluaran', pengeluaranRoutes);
 
 
 app.get('/pendapatan', async (req,res) => {
@@ -47,6 +51,17 @@ app.get('/pendapatan', async (req,res) => {
   } catch(error){
     console.error("Error mengambil data pendapatan:", error);
     res.status(500).send('Terjadi kesalahan dalam mengambil data pendapatan.');
+  }
+});
+
+app.get('/pengeluaran', async (req,res) => {
+  try{
+    console.log("Pengeluaran model:", Pengeluaran);
+    const pengeluaranData = await Pengeluaran.find().sort('name');
+    res.render('pengeluaran', { pengeluaran: pengeluaranData });
+  } catch(error){
+    console.error("Error mengambil data pengeluaran:", error);
+    res.status(500).send('Terjadi kesalahan dalam mengambil data pengeluaran.');
   }
 });
 
